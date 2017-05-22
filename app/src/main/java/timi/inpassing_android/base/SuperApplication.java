@@ -9,8 +9,13 @@ import android.support.multidex.MultiDexApplication;
  */
 
 public class SuperApplication extends MultiDexApplication {
+    static SuperApplication instance;
     @Override
     public void onCreate() {
         super.onCreate();
     }
+    static public SuperApplication getInstance() {
+        return instance;
+    }
+
 }
