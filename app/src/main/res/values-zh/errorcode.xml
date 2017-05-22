@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="code_undefined">错误码未定义</string>
+    <string name="code_no_internet">似乎已断开与互联网的链接</string>
+
+</resources>
