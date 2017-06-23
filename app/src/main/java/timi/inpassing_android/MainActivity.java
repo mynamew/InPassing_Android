@@ -1,13 +1,34 @@
 package timi.inpassing_android;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import timi.inpassing_android.base.SuperActivity;
+
+public class MainActivity extends SuperActivity {
+
+    @BindView(R.id.tv_test)
+    TextView tvTest;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int setLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initBundle() {
+
+    }
+
+    @Override
+    public void initView() {
+        tvTest.setText("heihei ");
+
+    }
+
+    @Override
+    public void initData() {
+
     }
 }

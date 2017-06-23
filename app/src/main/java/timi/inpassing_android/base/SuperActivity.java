@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.zhy.autolayout.AutoLayoutActivity;
 
+import butterknife.ButterKnife;
 import timi.inpassing_android.R;
 
 /**
@@ -26,6 +27,7 @@ public abstract class SuperActivity extends AutoLayoutActivity {
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(setLayoutId());
+        ButterKnife.bind(this);
         currentActivity = this;
         //返回事件
         if (null != findViewById(R.id.iv_back)) {
@@ -36,6 +38,9 @@ public abstract class SuperActivity extends AutoLayoutActivity {
                 }
             });
         }
+        initBundle();
+        initView();
+        initData();
     }
 
     /**
