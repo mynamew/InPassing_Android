@@ -62,4 +62,5 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:2.0.1'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile 'com.orhanobut:logger:2.1.1'
+    compile project(':slidemenulibrary')
 }

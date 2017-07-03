@@ -24,8 +24,8 @@ public abstract class SuperActivity extends AutoLayoutActivity {
     public Activity currentActivity;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(setLayoutId());
         ButterKnife.bind(this);
         currentActivity = this;
