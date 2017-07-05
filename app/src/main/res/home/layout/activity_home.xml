@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="timi.inpassing_android.HomeActivity">
-    <include layout="@layout/layout_title_bar"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="主页"/>
+    tools:context=".HomeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:onClick="openSlideMenu"
+            android:text="主页"
+            tools:ignore="OnClick" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#999" />
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <com.tencent.tencentmap.mapsdk.map.MapView
+           android:id="@+id/mapview"
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent" />
+       <Button
+           android:onClick="reloadLocation"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_margin="20px"
+           android:layout_alignParentRight="true"
+           android:text="定位"/>
+   </RelativeLayout>
 </LinearLayout>

@@ -4,9 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InPassing_Android.iml" filepath="$PROJECT_DIR$/InPassing_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\InPassing_Android\slidemenulibrary\library.iml" filepath="E:\InPassing_Android\slidemenulibrary\library.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidelibrary/slidelibrary.iml" filepath="$PROJECT_DIR$/slidelibrary/slidelibrary.iml" />
-      <module fileurl="file://E:\InPassing_Android\slidelibrary\slidelibrary.iml" filepath="E:\InPassing_Android\slidelibrary\slidelibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/slidemenulibrary/library.iml" filepath="$PROJECT_DIR$/slidemenulibrary/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" filepath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" />
     </modules>
   </component>
 </project>

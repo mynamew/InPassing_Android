@@ -1,5 +1,7 @@
 package timi.inpassing_android;
 
+import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -17,9 +19,10 @@ public class MainActivity extends SuperActivity {
     }
 
     @Override
-    public void initBundle() {
+    public void initBundle(Bundle savedInstanceState) {
 
     }
+
 
     @Override
     public void initView() {
@@ -30,5 +33,8 @@ public class MainActivity extends SuperActivity {
     @Override
     public void initData() {
 
+    }
+
+    public void openSlideMenu(View view) {
     }
 }

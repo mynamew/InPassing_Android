@@ -1,32 +1,61 @@
 package timi.inpassing_android;
 
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.TencentLocationManager;
+import com.tencent.map.geolocation.TencentLocationRequest;
+import com.tencent.mapsdk.raster.model.BitmapDescriptorFactory;
+import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.mapsdk.raster.model.Marker;
+import com.tencent.mapsdk.raster.model.MarkerOptions;
+import com.tencent.tencentmap.mapsdk.map.MapView;
+import com.tencent.tencentmap.mapsdk.map.TencentMap;
 
 import timi.inpassing_android.base.SuperActivity;
+import timi.inpassing_android.views.CustomFloatButton;
 
-public class HomeActivity extends SuperActivity {
-
-
+public class HomeActivity extends SuperActivity implements TencentLocationListener {
+    //地图
+    private MapView mapview;
+    //侧滑的菜单
+    private SlidingMenu menu;
+    //地图
+    private TencentMap tencentMap;
+    //定位监听
+    private TencentLocationManager locationManager;
+    //定位的请求
+    private TencentLocationRequest request;
+    //当前的经纬度
+    private double latitude,longitude;
+    //当前的坐标
+    private LatLng latLngCurrentLocation;
     @Override
     public int setLayoutId() {
         return R.layout.activity_home;
     }
 
     @Override
-    public void initBundle() {
-
+    public void initBundle(Bundle savedInstanceState) {
+        //地图
+        mapview = (MapView) findViewById(R.id.mapview);
+        mapview.onCreate(savedInstanceState);
     }
 
     @Override
     public void initView() {
-        SlidingMenu menu = new SlidingMenu(this);
+        //侧滑菜单
+        menu = new SlidingMenu(this);
         menu.setMode(SlidingMenu.LEFT);
         // 设置触摸屏幕的模式
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         //设置菜单占屏幕的比例
-        menu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 4);
+        menu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 3);
 
         // 设置滑动菜单视图的宽度
         menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
@@ -40,10 +69,105 @@ public class HomeActivity extends SuperActivity {
         //为侧滑菜单设置布局
         menu.setMenu(R.layout.leftmenu);
         menu.setOffsetFadeDegree(0.4f);
+        //设置map
+        //获取TencentMap实例
+        tencentMap = mapview.getMap();
+        //设置中心点
+        tencentMap.setCenter(new LatLng(39, 116));
+        //设置缩放级别
+        tencentMap.setZoom(100);
+    }
+    @Override
+    public void initData() {
+        request = TencentLocationRequest.create();
+        request.setRequestLevel(TencentLocationRequest.REQUEST_LEVEL_ADMIN_AREA);
+        //设置定位时间间隔
+        request.setInterval(1000);
+        locationManager = TencentLocationManager.getInstance(HomeActivity.this);
+        int error = locationManager.requestLocationUpdates(request, this);
+        //设置    marker
+        MarkerOptions draggable = new MarkerOptions().position(latLngCurrentLocation).anchor(0.5f, 0.5f).icon(BitmapDescriptorFactory.defaultMarker()).draggable(true);
+        Marker marker = tencentMap.addMarker(draggable);
     }
 
     @Override
-    public void initData() {
+    protected void onDestroy() {
+        mapview.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        mapview.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mapview.onResume();
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        mapview.onStop();
+        super.onStop();
+    }
+
+    /**
+     * 打开策划的菜单
+     *
+     * @param view
+     */
+    public void openSlideMenu(View view) {
+        new CustomFloatButton.Builder().setTitle("接单").setImgRes(R.drawable.bg_custom_float_bt).setContext(this).build().show();
+        menu.showMenu();
+    }
+
+    /**
+     * 重新定位
+     *
+     * @param view
+     */
+    public void reloadLocation(View view) {
+        //设置定位的监听器
+//        locationManager.requestLocationUpdates(request, this);
+        startActivity(new Intent(HomeActivity.this,MainActivity.class));
+    }
+
+    /**
+     * 定位改变
+     *
+     * @param tencentLocation
+     * @param error
+     * @param s
+     */
+    @Override
+    public void onLocationChanged(TencentLocation tencentLocation, int error, String s) {
+        if (TencentLocation.ERROR_OK == error) {
+            // 定位成功 设置经纬度
+            latitude=tencentLocation.getLatitude();
+            longitude=tencentLocation.getLongitude();
+            //设置当前位置的经纬度
+            latLngCurrentLocation=new LatLng(latitude,longitude);
+            //设置地图的中心点
+            tencentMap.setCenter(latLngCurrentLocation);
+            //移除监听器
+            locationManager.removeUpdates(this);
+        } else {
+            // 定位失败
+        }
+    }
+
+    /**
+     * 状态改变
+     *
+     * @param s
+     * @param i
+     * @param s1
+     */
+    @Override
+    public void onStatusUpdate(String s, int i, String s1) {
 
     }
 }

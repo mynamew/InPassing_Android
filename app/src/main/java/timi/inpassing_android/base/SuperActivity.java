@@ -38,7 +38,7 @@ public abstract class SuperActivity extends AutoLayoutActivity {
                 }
             });
         }
-        initBundle();
+        initBundle(savedInstanceState);
         initView();
         initData();
     }
@@ -94,7 +94,7 @@ public abstract class SuperActivity extends AutoLayoutActivity {
     //设置布局id
     public abstract int setLayoutId();
     //初始化bundle
-    public abstract void initBundle();
+    public abstract void initBundle(Bundle savedInstanceState);
     //初始化View
     public abstract void initView();
     //初始化数据
