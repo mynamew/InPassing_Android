@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +7,7 @@
     tools:context=".HomeActivity">
 
     <RelativeLayout
+        android:id="@+id/rl_top_head"
         android:layout_width="match_parent"
         android:layout_height="100px">
 
@@ -17,27 +18,45 @@
             android:onClick="openSlideMenu"
             android:text="主页"
             tools:ignore="OnClick" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_alignParentBottom="true"
+            android:background="#999" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#999" />
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-       <com.tencent.tencentmap.mapsdk.map.MapView
-           android:id="@+id/mapview"
-           android:layout_width="fill_parent"
-           android:layout_height="fill_parent" />
-       <Button
-           android:onClick="reloadLocation"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:layout_margin="20px"
-           android:layout_alignParentRight="true"
-           android:text="定位"/>
-   </RelativeLayout>
-</LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_top_head">
+
+        <com.tencent.tencentmap.mapsdk.map.MapView
+            android:id="@+id/mapview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20px"
+            android:onClick="reloadLocation"
+            android:text="定位" />
+        <timi.inpassing_android.widgets.MyCustomFloatButton
+            android:id="@+id/bt_home_publish_order"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginTop="100px"
+            android:transitionName="publishOrder"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_custom_float_bt"
+            android:text="派单"
+            android:textColor="#fff"
+            android:textSize="30px" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

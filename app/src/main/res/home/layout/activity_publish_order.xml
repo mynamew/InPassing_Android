@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="timi.inpassing_android.PublishOrderActivity">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <timi.inpassing_android.widgets.MyCustomFloatButton
+        android:id="@+id/mcf_publish_order_bt"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:background="@drawable/bg_custom_float_bt"
+        android:text="派单"
+        android:textColor="#fff"
+        android:transitionName="publishOrder"
+        android:layout_marginTop="100px"
+        android:layout_gravity="center_horizontal"
+        android:textSize="24px" />
+</LinearLayout>

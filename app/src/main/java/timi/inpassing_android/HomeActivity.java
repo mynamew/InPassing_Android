@@ -3,9 +3,12 @@ package timi.inpassing_android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.library.viewspread.helper.BaseViewHelper;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
@@ -19,6 +22,7 @@ import com.tencent.tencentmap.mapsdk.map.TencentMap;
 
 import timi.inpassing_android.base.SuperActivity;
 import timi.inpassing_android.views.CustomFloatButton;
+import timi.inpassing_android.widgets.MyCustomFloatButton;
 
 public class HomeActivity extends SuperActivity implements TencentLocationListener {
     //地图
@@ -32,9 +36,13 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
     //定位的请求
     private TencentLocationRequest request;
     //当前的经纬度
-    private double latitude,longitude;
+    private double latitude, longitude;
     //当前的坐标
     private LatLng latLngCurrentLocation;
+
+    //view
+    private MyCustomFloatButton btFloat;
+
     @Override
     public int setLayoutId() {
         return R.layout.activity_home;
@@ -69,6 +77,7 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
         //为侧滑菜单设置布局
         menu.setMenu(R.layout.leftmenu);
         menu.setOffsetFadeDegree(0.4f);
+        btFloat = (MyCustomFloatButton) findViewById(R.id.bt_home_publish_order);
         //设置map
         //获取TencentMap实例
         tencentMap = mapview.getMap();
@@ -76,7 +85,18 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
         tencentMap.setCenter(new LatLng(39, 116));
         //设置缩放级别
         tencentMap.setZoom(100);
+        ((MyCustomFloatButton) findViewById(R.id.bt_home_publish_order)).setCustonOnClickListener(new MyCustomFloatButton.MyCustomButtonClickListener() {
+            @Override
+            public void click(View view) {
+                Intent intent = new Intent(HomeActivity.this, PublishOrderActivity.class);
+                intent.putExtra("id",view.getId());
+                new BaseViewHelper
+                        .Builder(HomeActivity.this, view)
+                        .startActivity(intent);
+            }
+        });
     }
+
     @Override
     public void initData() {
         request = TencentLocationRequest.create();
@@ -132,7 +152,7 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
     public void reloadLocation(View view) {
         //设置定位的监听器
 //        locationManager.requestLocationUpdates(request, this);
-        startActivity(new Intent(HomeActivity.this,MainActivity.class));
+        startActivity(new Intent(HomeActivity.this, MainActivity.class));
     }
 
     /**
@@ -146,10 +166,10 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
     public void onLocationChanged(TencentLocation tencentLocation, int error, String s) {
         if (TencentLocation.ERROR_OK == error) {
             // 定位成功 设置经纬度
-            latitude=tencentLocation.getLatitude();
-            longitude=tencentLocation.getLongitude();
+            latitude = tencentLocation.getLatitude();
+            longitude = tencentLocation.getLongitude();
             //设置当前位置的经纬度
-            latLngCurrentLocation=new LatLng(latitude,longitude);
+            latLngCurrentLocation = new LatLng(latitude, longitude);
             //设置地图的中心点
             tencentMap.setCenter(latLngCurrentLocation);
             //移除监听器
@@ -170,4 +190,5 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
     public void onStatusUpdate(String s, int i, String s1) {
 
     }
+
 }

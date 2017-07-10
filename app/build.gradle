@@ -65,4 +65,5 @@ dependencies {
     compile project(':slidemenulibrary')
     compile files('libs/TencentMapSDK_Raster_v_1.2.8_e45bcd0.jar')
     compile files('libs/TencentLocationSDK_v6.1.2_r1df4baaa_170627_1056.jar')
+    compile project(':viewspreadtranslationlibrary')
 }

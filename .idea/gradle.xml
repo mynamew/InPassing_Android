@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/slidelibrary" />
             <option value="$PROJECT_DIR$/slidemenulibrary" />
+            <option value="$PROJECT_DIR$/viewspreadtranslationlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

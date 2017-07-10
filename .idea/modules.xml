@@ -7,6 +7,7 @@
       <module fileurl="file://E:\InPassing_Android\slidemenulibrary\library.iml" filepath="E:\InPassing_Android\slidemenulibrary\library.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidelibrary/slidelibrary.iml" filepath="$PROJECT_DIR$/slidelibrary/slidelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" filepath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewspreadtranslationlibrary/viewspreadtranslationlibrary.iml" filepath="$PROJECT_DIR$/viewspreadtranslationlibrary/viewspreadtranslationlibrary.iml" />
     </modules>
   </component>
 </project>

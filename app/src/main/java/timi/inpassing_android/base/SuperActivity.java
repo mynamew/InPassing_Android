@@ -1,6 +1,7 @@
 package timi.inpassing_android.base;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.DrawableRes;
@@ -14,6 +15,8 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 import butterknife.ButterKnife;
 import timi.inpassing_android.R;
+import timi.inpassing_android.utils.Constants;
+import timi.inpassing_android.utils.statusutils.StatusBarUtil;
 
 /**
  * Created by timi on 2017/5/13.
@@ -38,6 +41,8 @@ public abstract class SuperActivity extends AutoLayoutActivity {
                 }
             });
         }
+        //设置状态栏颜色 默认
+        StatusBarUtil.setColor(this, Color.parseColor(Constants.StatusColorStr));
         initBundle(savedInstanceState);
         initView();
         initData();
