@@ -5,6 +5,35 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "timi.inpassing_android"
+        signingConfigs {
+            dis {
+                keyAlias 'Huanbei'
+                keyPassword 'hb258000'
+                storeFile file('E:/Huanbei_DIS.jks')
+                storePassword 'hb258000'
+            }
+            /**
+             * 设置你的keystore相关
+             * demo中只是一个示例，使用时请根据实际情况进行配置
+             */
+            debug {
+                //keystore中key的别名
+                keyAlias 'huanbei'
+                //keystore中key的密码
+                keyPassword 'hb258000'
+                //keystore的文件路径，可以是绝对路径也可以是相对路径
+                storeFile file('E:/Huanbei_DIS.jks')
+                //keystore的密码
+                storePassword 'hb258000'
+            }
+
+            lintOptions {
+                checkReleaseBuilds false
+                // Or, if you prefer, you can continue to check for errors in release builds,
+                // but continue the build even when errors are found:
+                abortOnError false
+            }
+        }
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
@@ -73,5 +102,4 @@ dependencies {
     compile files('libs/TencentMapSDK_Raster_v_1.2.8_e45bcd0.jar')
     compile files('libs/TencentLocationSDK_v6.1.2_r1df4baaa_170627_1056.jar')
     compile project(':viewspreadtranslationlibrary')
-    compile project(':ali')
 }

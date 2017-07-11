@@ -1,8 +1,6 @@
 package timi.inpassing_android;
 
 import android.graphics.Color;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -70,4 +68,6 @@ public class PublishOrderActivity extends SuperActivity {
             super.onBackPressed();
         }
     }
+
+
 }

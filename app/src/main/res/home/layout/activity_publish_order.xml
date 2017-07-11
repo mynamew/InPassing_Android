@@ -20,4 +20,16 @@
         android:layout_marginTop="100px"
         android:layout_gravity="center_horizontal"
         android:textSize="24px" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="AliPay"
+        android:text="支付宝支付"
+        tools:ignore="OnClick" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="WeChartPay"
+        android:text="微信支付"
+        tools:ignore="OnClick" />
 </LinearLayout>
