@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.library.viewspread.helper.BaseViewHelper;
+import com.orhanobut.logger.Logger;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
@@ -84,7 +85,7 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
         //设置中心点
         tencentMap.setCenter(new LatLng(39, 116));
         //设置缩放级别
-        tencentMap.setZoom(100);
+        tencentMap.setZoom(16);
         ((MyCustomFloatButton) findViewById(R.id.bt_home_publish_order)).setCustonOnClickListener(new MyCustomFloatButton.MyCustomButtonClickListener() {
             @Override
             public void click(View view) {
@@ -105,9 +106,6 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
         request.setInterval(1000);
         locationManager = TencentLocationManager.getInstance(HomeActivity.this);
         int error = locationManager.requestLocationUpdates(request, this);
-        //设置    marker
-        MarkerOptions draggable = new MarkerOptions().position(latLngCurrentLocation).anchor(0.5f, 0.5f).icon(BitmapDescriptorFactory.defaultMarker()).draggable(true);
-        Marker marker = tencentMap.addMarker(draggable);
     }
 
     @Override
@@ -151,8 +149,7 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
      */
     public void reloadLocation(View view) {
         //设置定位的监听器
-//        locationManager.requestLocationUpdates(request, this);
-        startActivity(new Intent(HomeActivity.this, MainActivity.class));
+        locationManager.requestLocationUpdates(request, this);
     }
 
     /**
@@ -164,6 +161,7 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
      */
     @Override
     public void onLocationChanged(TencentLocation tencentLocation, int error, String s) {
+        Logger.d(TAG+"定位---->",tencentLocation.getLatitude()+":"+tencentLocation.getLongitude());
         if (TencentLocation.ERROR_OK == error) {
             // 定位成功 设置经纬度
             latitude = tencentLocation.getLatitude();
@@ -174,8 +172,19 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
             tencentMap.setCenter(latLngCurrentLocation);
             //移除监听器
             locationManager.removeUpdates(this);
+            //设置    marker
+            Marker marker = tencentMap.addMarker(new MarkerOptions()
+                    .position(latLngCurrentLocation)
+                    .title("当前位置")
+                    .anchor(0.5f, 0.5f)
+                    .icon(BitmapDescriptorFactory
+                            .defaultMarker())
+                    .draggable(true));
+            marker.showInfoWindow();// 设置默认显示一个infoWindow
         } else {
             // 定位失败
+            //设置当前位置的经纬度
+            latLngCurrentLocation = new LatLng(43, 64);
         }
     }
 

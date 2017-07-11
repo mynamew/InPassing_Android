@@ -25,13 +25,14 @@ import timi.inpassing_android.utils.statusutils.StatusBarUtil;
 
 public abstract class SuperActivity extends AutoLayoutActivity {
     public Activity currentActivity;
-
+    public String TAG="";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutId());
         ButterKnife.bind(this);
         currentActivity = this;
+        TAG=currentActivity.getClass().getSimpleName()+"_";
         //返回事件
         if (null != findViewById(R.id.iv_back)) {
             findViewById(R.id.iv_back).setOnClickListener(new View.OnClickListener() {
