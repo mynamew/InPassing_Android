@@ -149,7 +149,8 @@ public class HomeActivity extends SuperActivity implements TencentLocationListen
      */
     public void reloadLocation(View view) {
         //设置定位的监听器
-        locationManager.requestLocationUpdates(request, this);
+//        locationManager.requestLocationUpdates(request, this);
+        startActivity(new Intent(HomeActivity.this,ZxingActivity.class));
     }
 
     /**

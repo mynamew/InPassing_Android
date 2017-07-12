@@ -14,4 +14,23 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+    <!-- RoundImageView的自定义属性 -->
+    <declare-styleable name="RoundImageView">
+        <attr name="roundLeftTop" format="dimension" />
+        <attr name="roundRightTop" format="dimension" />
+        <attr name="roundRightBottom" format="dimension" />
+        <attr name="roundLeftBottom" format="dimension" />
+    </declare-styleable>
+    <!--飘屏通知的动画-->
+    <style name="TopNoticeAnim">
+        <item name="android:windowEnterAnimation">@anim/top_view_in</item>
+        <item name="android:windowExitAnimation">@anim/top_view_out</item>
+    </style>
+    <!--切换状态的布局的style-->
+    <declare-styleable name="status_layout">
+        <attr name="nodata" format="integer"></attr>
+        <attr name="nointernet" format="integer" />
+        <attr name="error" format="integer" />
+        <attr name="loading" format="integer" />
+    </declare-styleable>
 </resources>

@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!--zxing 二维码扫描相关-->
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="header">#58567D</color>
+    <color name="grgray">#686868</color>
+    <color name="backgroud">#ffffffff</color>
+    <color name="ProfileFragmentbackgread">#F1F2F6</color>
+    <color name="white">#ffffff</color>
+    <color name="possible_result_points">#c0ffff00</color>
 </resources>

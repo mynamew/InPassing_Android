@@ -102,4 +102,12 @@ dependencies {
     compile files('libs/TencentMapSDK_Raster_v_1.2.8_e45bcd0.jar')
     compile files('libs/TencentLocationSDK_v6.1.2_r1df4baaa_170627_1056.jar')
     compile project(':viewspreadtranslationlibrary')
+    compile files('libs/zxing.jar')
+    /*cirlce img*/
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    /*socket*/
+    compile 'com.koushikdutta.async:androidasync:2.+'
+    compile files('libs/GifView.jar')
+    compile files('libs/ksoap2-android-assembly-3.6.1-jar-with-dependencies.jar')
+    compile project(':weixin')
 }

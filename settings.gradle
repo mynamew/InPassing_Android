@@ -1,1 +1,1 @@
-include ':app', ':slidemenulibrary', ':viewspreadtranslationlibrary'
+include ':app', ':slidemenulibrary', ':viewspreadtranslationlibrary', ':weixin'
