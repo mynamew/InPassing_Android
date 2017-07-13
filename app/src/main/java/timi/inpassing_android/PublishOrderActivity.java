@@ -1,17 +1,19 @@
 package timi.inpassing_android;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.library.viewspread.helper.BaseViewHelper;
-import com.quhuanbei.quhuanbei.weixin.pay.WXPay;
+import com.quhuanbei.quhuanbei.ali.Alipay;
+import com.quhuanbei.quhuanbei.ali.PayItem;
 
 import timi.inpassing_android.base.SuperActivity;
+import timi.inpassing_android.config.Deployment;
 import timi.inpassing_android.config.Gateway;
 import timi.inpassing_android.utils.StringUtils;
+import timi.inpassing_android.utils.ToastUtils;
 
 /**
  * 派单
@@ -73,44 +75,44 @@ public class PublishOrderActivity extends SuperActivity {
             super.onBackPressed();
         }
     }
-    /**
-     * 微信支付
-     */
-    private void dowxpay() {
-        //微信支付
-        WXPay.PayItem item = new WXPay.PayItem(String.valueOf("1"), "微信购买测试" ,   "", Gateway.getServerURL("") + Gateway.getWeChartPayOrder(), StringUtils.getWXTime(System.currentTimeMillis()), StringUtils.getWXTime(System.currentTimeMillis() + (5 * 60 * 1000)));
-        WXPay.pay(PublishOrderActivity.this, item, new WXPay.PayListener() {
-            @Override
-            public void onPrepare() {
-//                Log.e("MT", "支付-开始准备");
-            }
-
-            @Override
-            public void onLaunchWX() {
-//                Log.e("MT", "支付-跳转微信");
-            }
-
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onSuccess() {
-//                Log.e("MT", "支付-成功");
-                Toast.makeText(PublishOrderActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
-            }
-
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onFailture() {
-//                Log.e("MT", "支付-失败");
-                Toast.makeText(PublishOrderActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     /**
      * 微信支付
      * @param view
      */
     public void WeChartPay(View view) {
-        dowxpay();
+
     }
+
+    public void AliPay(View view) {
+        doAlipay();
+    }
+    /**
+     * 支付宝支付
+     */
+    private void doAlipay() {
+        PayItem item = new PayItem();
+        item.setPartner(Deployment.ALIPAY_PARTNER).setSeller(Deployment.ALIPAY_SELLER).setRsakey(Deployment.ALIPAY_RSA_PRIVATE);
+        item.setNotiURL(Gateway.getServerURL("") + Gateway.getPayOrder()).setOrderID( "123456").setMoney("1").setTitle("测试支付宝").setDesc("购买测试");
+
+        Alipay.with(this).pay(item, new Alipay.PayCallback() {
+                    @Override
+                    public void onSuccess(String orderID) {
+                        ToastUtils.showShort(PublishOrderActivity.this,"支付成功");
+                    }
+
+                    @Override
+                    public void onFailture(String orderID) {
+                        ToastUtils.showShort(PublishOrderActivity.this,"支付失败");
+                    }
+
+                    @Override
+                    public void onUnknown(String orderID) {
+                        ToastUtils.showShort(PublishOrderActivity.this,"结果未知，请刷新订单信息");
+                    }
+                }
+
+        );
+    }
+
 }

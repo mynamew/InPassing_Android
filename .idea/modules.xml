@@ -3,11 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InPassing_Android.iml" filepath="$PROJECT_DIR$/InPassing_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ali/ali.iml" filepath="$PROJECT_DIR$/ali/ali.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\InPassing_Android\slidemenulibrary\library.iml" filepath="E:\InPassing_Android\slidemenulibrary\library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slidemenulibrary/library.iml" filepath="$PROJECT_DIR$/slidemenulibrary/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" filepath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/viewspreadtranslationlibrary/viewspreadtranslationlibrary.iml" filepath="$PROJECT_DIR$/viewspreadtranslationlibrary/viewspreadtranslationlibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin/weixin.iml" filepath="$PROJECT_DIR$/weixin/weixin.iml" />
     </modules>
   </component>
 </project>

@@ -8,10 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ali" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/slidemenulibrary" />
             <option value="$PROJECT_DIR$/viewspreadtranslationlibrary" />
-            <option value="$PROJECT_DIR$/weixin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

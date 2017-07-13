@@ -107,7 +107,11 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     /*socket*/
     compile 'com.koushikdutta.async:androidasync:2.+'
+    /*动图*/
     compile files('libs/GifView.jar')
+    /*webservice*/
     compile files('libs/ksoap2-android-assembly-3.6.1-jar-with-dependencies.jar')
-    compile project(':weixin')
+    /*微信*/
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    compile project(':ali')
 }
